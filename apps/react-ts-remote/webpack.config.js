@@ -1,5 +1,5 @@
 const { withModuleFederation } = require('@nrwl/react/module-federation');
-const { FederatedTypesPlugin } = require('@module-federation/typescript');
+const { FederatedTypesPlugin } = require('@ranshamay/typescript');
 
 const baseConfig = require('./module-federation.config');
 

@@ -1,9 +1,9 @@
 <div align="center">
 	<!--  for version -->
-  <img src="https://img.shields.io/npm/v/@module-federation/nextjs-mf" alt="version" >
-	<img src="https://img.shields.io/npm/l/@module-federation/nextjs-mf.svg?" alt="license" >
+  <img src="https://img.shields.io/npm/v/@ranshamay/nextjs-mf" alt="version" >
+	<img src="https://img.shields.io/npm/l/@ranshamay/nextjs-mf.svg?" alt="license" >
   <!-- for downloads -->
-  <img src="https://img.shields.io/npm/dt/@module-federation/nextjs-mf" alt="downloads">
+  <img src="https://img.shields.io/npm/dt/@ranshamay/nextjs-mf" alt="downloads">
  </div>
 
 # Module Federation For Next.js
@@ -165,7 +165,7 @@ You can see it in action here: https://github.com/module-federation/module-feder
 ```js
 // next.config.js
 // either from default
-const NextFederationPlugin = require('@module-federation/nextjs-mf');
+const NextFederationPlugin = require('@ranshamay/nextjs-mf');
 
 module.exports = {
   webpack(config, options) {
@@ -194,7 +194,7 @@ module.exports = {
 // _app.js or some other file in as high up in the app (like next's new layouts)
 // this ensures various parts of next.js are imported and "used" somewhere so that they wont be tree shaken out
 // note: this is optional in the latest release, as it is auto-injected by NextFederationPlugin now
-import '@module-federation/nextjs-mf/src/include-defaults';
+import '@ranshamay/nextjs-mf/src/include-defaults';
 ```
 
 2. For the consuming application, we'll call it "next1", add an instance of the ModuleFederationPlugin to your webpack config, and ensure you have a [custom Next.js App](https://nextjs.org/docs/advanced-features/custom-app) `pages/_app.js` (or `.tsx`):
@@ -203,7 +203,7 @@ import '@module-federation/nextjs-mf/src/include-defaults';
 ```js
 // next.config.js
 
-const NextFederationPlugin = require('@module-federation/nextjs-mf');
+const NextFederationPlugin = require('@ranshamay/nextjs-mf');
 
 module.exports = {
   webpack(config, options) {
@@ -224,7 +224,7 @@ module.exports = {
 // _app.js or some other file in as high up in the app (like next's new layouts)
 // this ensures various parts of next.js are imported and "used" somewhere so that they wont be tree shaken out
 // note: this is optional in the latest release, as it is auto-injected by NextFederationPlugin now
-import '@module-federation/nextjs-mf/src/include-defaults';
+import '@ranshamay/nextjs-mf/src/include-defaults';
 ```
 
 4. Use next/dynamic or low level api to import remotes.
@@ -272,7 +272,7 @@ If an error occurs while loading the script, a custom error object is created an
 
 ```js
 //next.config.js
-const { createDelegatedModule } = require('@module-federation/utilities');
+const { createDelegatedModule } = require('@ranshamay/utilities');
 const remotes = {
   checkout: createDelegatedModule(require.resolve('./remote-delegate.js'), {
     remote: `checkout@http://localhost:3002/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
@@ -280,7 +280,7 @@ const remotes = {
 };
 
 //remote-delegate.js
-import { importDelegatedModule } from '@module-federation/utilities';
+import { importDelegatedModule } from '@ranshamay/utilities';
 //Delegate MUST use module.exports, not export default - this is a webpack limitation
 module.exports = new Promise((resolve, reject) => {
   console.log('Delegate being called for', __resourceQuery);
@@ -397,7 +397,7 @@ Ive added a util for dynamic chunk loading, in the event you need to load remote
 **InjectScript**
 
 ```js
-import { injectScript } from '@module-federation/nextjs-mf/utils';
+import { injectScript } from '@ranshamay/nextjs-mf/utils';
 // if i have remotes in my federation plugin, i can pass the name of the remote
 injectScript('home').then((remoteContainer) => {
   remoteContainer.get('./exposedModule');
@@ -422,7 +422,7 @@ More info here: https://github.com/module-federation/nextjs-mf/tree/main/package
 ```js
 // __document.js
 
-import { revalidate } from '@module-federation/nextjs-mf/utils';
+import { revalidate } from '@ranshamay/nextjs-mf/utils';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 class MyDocument extends Document {
   static async getInitialProps(ctx) {

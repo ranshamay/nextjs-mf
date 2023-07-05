@@ -10,7 +10,7 @@ module.exports = {
     '@storybook/addon-essentials',
     '@nrwl/react/plugins/storybook',
     {
-      name: '@module-federation/storybook-addon',
+      name: '@ranshamay/storybook-addon',
       options: {
         nxModuleFederationConfig: { ...nxModuleFederationConfig },
       },

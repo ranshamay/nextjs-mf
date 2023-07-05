@@ -1,5 +1,5 @@
 {
-  "name": "@module-federation/3002-checkout",
+  "name": "@ranshamay/3002-checkout",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -8,6 +8,6 @@
     "next": "13.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "@module-federation/nextjs-mf": "*"
+    "@ranshamay/nextjs-mf": "*"
   }
 }

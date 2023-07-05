@@ -1,5 +1,5 @@
 {
-  "name": "@module-federation/native-federation-tests",
+  "name": "@ranshamay/native-federation-tests",
   "version": "0.2.0",
   "description": "Bundler agnostic unplugin to share federated tests",
   "publishConfig": {

@@ -110,7 +110,7 @@ export function handleServerExternals(
               ctx?.request?.includes(key)
             );
           }) ||
-          ctx.request.includes('@module-federation/dashboard-plugin'))
+          ctx.request.includes('@ranshamay/dashboard-plugin'))
       ) {
         // If the module should not be treated as external, return without calling the original externals function
         return;

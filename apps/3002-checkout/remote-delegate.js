@@ -7,9 +7,7 @@ module.exports = new Promise(async (resolve, reject) => {
   // console.log('Delegate being called for', __resourceQuery);
   //eslint-disable-next-line
   const currentRequest = new URLSearchParams(__resourceQuery).get('remote');
-  const { importDelegatedModule } = await import(
-    '@module-federation/utilities'
-  );
+  const { importDelegatedModule } = await import('@ranshamay/utilities');
 
   const [global, url] = currentRequest.split('@');
 

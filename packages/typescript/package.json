@@ -1,5 +1,5 @@
 {
-  "name": "@module-federation/typescript",
+  "name": "@ranshamay/typescript",
   "version": "2.2.3",
   "description": "Webpack plugin to stream typescript for module federation apps/components",
   "license": "MIT",

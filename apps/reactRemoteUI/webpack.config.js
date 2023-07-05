@@ -1,6 +1,6 @@
 const { composePlugins, withNx } = require('@nrwl/webpack');
 const { withReact } = require('@nrwl/react');
-const { withModuleFederation } = require('@module-federation/storybook-addon');
+const { withModuleFederation } = require('@ranshamay/storybook-addon');
 const baseConfig = require('./module-federation.config');
 
 const config = {

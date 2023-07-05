@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-PACKAGES=(@module-federation/storybook-addon @module-federation/native-federation-tests @module-federation/native-federation-typescript @module-federation/typescript)
+PACKAGES=(@ranshamay/storybook-addon @ranshamay/native-federation-tests @ranshamay/native-federation-typescript @ranshamay/typescript)
 
 for package in "${PACKAGES[@]}"; do
   # Check if the package is published with "next" tag
