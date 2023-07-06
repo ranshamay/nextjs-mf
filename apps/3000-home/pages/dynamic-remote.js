@@ -1,5 +1,4 @@
 import React from 'react';
-//eslint-disable-next-line
 import { injectScript } from '@ranshamay/utilities';
 // example of dynamic remote import on server and client
 const isServer = typeof window === 'undefined';

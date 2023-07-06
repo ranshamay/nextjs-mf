@@ -24,6 +24,7 @@
       ],
       "@ranshamay/nextjs-mf": ["packages/nextjs-mf/src/index.ts"],
       "@ranshamay/node": ["packages/node/src/index.ts"],
+      "@ranshamay/storybook-addon": ["packages/storybook-addon/src/index.ts"],
       "@ranshamay/typescript": ["packages/typescript/src/index.ts"],
       "@ranshamay/utilities": ["packages/utilities/src/index.ts"]
     }

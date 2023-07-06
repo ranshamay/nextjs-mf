@@ -266,7 +266,7 @@ const remotes = {
 // ALL imports MUST BE dynamic imports in here like import()
 module.exports = new Promise(async (resolve, reject) => {
   const { importDelegatedModule } = await import(
-    '@ranshamay/utilities/src/utils/importDelegatedModule'
+    '@ranshamay/importDelegatedModule'
   );
   // eslint-disable-next-line no-undef
   const currentRequest = new URLSearchParams(__resourceQuery).get('remote');

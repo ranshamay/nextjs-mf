@@ -11,9 +11,11 @@ npm i -D @ranshamay/native-federation-typescript
 This module provides two plugins:
 
 ### NativeFederationTypeScriptRemote
+
 This plugin is used to build the federated types.
 
 #### Configuration
+
 ```typescript
 {
     moduleFederationConfig: any; // the configuration same configuration provided to the module federation plugin, it is MANDATORY
@@ -27,10 +29,12 @@ This plugin is used to build the federated types.
 ```
 
 #### Additional configuration
+
 Note that, for Webpack, the plugin automatically inject the `devServer.static.directory` configuration.  
 For the other bundlers, you should configure it by yourself.
 
 ### NativeFederationTypeScriptHost
+
 This plugin is used to download the federated types.
 
 ### Configuration
@@ -54,26 +58,31 @@ import {NativeFederationTypeScriptHost, NativeFederationTypeScriptRemote} from '
 
 export default defineConfig({
   plugins: [
-    NativeFederationTypeScriptRemote({ /* options */ }),
-    NativeFederationTypeScriptHost({ /* options */ }),
+    NativeFederationTypeScriptRemote({
+      /* options */
+    }),
+    NativeFederationTypeScriptHost({
+      /* options */
+    }),
   ],
   /* ... */
-  server: { // This is needed to emulate the devServer.static.directory of WebPack and correctly serve the zip file
+  server: {
+    // This is needed to emulate the devServer.static.directory of WebPack and correctly serve the zip file
     /* ... */
     proxy: {
       '/@mf-types.zip': {
-          target: 'http://localhost:3000',
-          changeOrigin: true,
-          rewrite: () => `/@fs/${process.cwd()}/dist/@mf-types.zip`
-      }
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        rewrite: () => `/@fs/${process.cwd()}/dist/@mf-types.zip`,
+      },
     },
     fs: {
       /* ... */
-      allow: ['./dist']
+      allow: ['./dist'],
       /* ... */
-    }
-  }
-})
+    },
+  },
+});
 ```
 
 <br>
@@ -87,10 +96,14 @@ import {NativeFederationTypeScriptHost, NativeFederationTypeScriptRemote} from '
 
 export default {
   plugins: [
-    NativeFederationTypeScriptRemote({ /* options */ }),
-    NativeFederationTypeScriptHost({ /* options */ }),
+    NativeFederationTypeScriptRemote({
+      /* options */
+    }),
+    NativeFederationTypeScriptHost({
+      /* options */
+    }),
   ],
-}
+};
 ```
 
 <br>
@@ -104,10 +117,14 @@ const {NativeFederationTypeScriptHost, NativeFederationTypeScriptRemote} = requi
 module.exports = {
   /* ... */
   plugins: [
-    NativeFederationTypeScriptRemote({ /* options */ }),
-    NativeFederationTypeScriptHost({ /* options */ })
-  ]
-}
+    NativeFederationTypeScriptRemote({
+      /* options */
+    }),
+    NativeFederationTypeScriptHost({
+      /* options */
+    }),
+  ],
+};
 ```
 
 <br>
@@ -122,10 +139,14 @@ import {NativeFederationTypeScriptHost, NativeFederationTypeScriptRemote} from '
 
 build({
   plugins: [
-    NativeFederationTypeScriptRemote({ /* options */ }),
-    NativeFederationTypeScriptHost({ /* options */ })
+    NativeFederationTypeScriptRemote({
+      /* options */
+    }),
+    NativeFederationTypeScriptHost({
+      /* options */
+    }),
   ],
-})
+});
 ```
 
 <br>
@@ -139,10 +160,14 @@ const {NativeFederationTypeScriptHost, NativeFederationTypeScriptRemote} = requi
 module.exports = {
   /* ... */
   plugins: [
-    NativeFederationTypeScriptRemote({ /* options */ }),
-    NativeFederationTypeScriptHost({ /* options */ })
-  ]
-}
+    NativeFederationTypeScriptRemote({
+      /* options */
+    }),
+    NativeFederationTypeScriptHost({
+      /* options */
+    }),
+  ],
+};
 ```
 
 <br>
@@ -153,7 +178,7 @@ module.exports = {
 To have the type definitions automatically found for imports, add paths to the `compilerOptions` in the `tsconfig.json`:
 
 ```json
-{  
+{
   "paths": {
     "*": ["./@mf-types/*"]
   }

@@ -1,10 +1,4 @@
-const { registerPluginTSTranspiler } = require('nx/src/utils/nx-plugin.js');
-
-registerPluginTSTranspiler();
-const { withNx } = require('@nx/next/plugins/with-nx');
-
 const NextFederationPlugin = require('@ranshamay/nextjs-mf');
-const { createDelegatedModule } = require('@ranshamay/utilities');
 
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}

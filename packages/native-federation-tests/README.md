@@ -13,9 +13,11 @@ npm i -D @ranshamay/native-federation-tests
 This module provides two plugins:
 
 ### NativeFederationTestsRemote
+
 This plugin is used to concat the components that will be used in tests.
 
 #### Configuration
+
 ```typescript
 {
     moduleFederationConfig: any; // the same configuration provided to the module federation plugin, it is MANDATORY
@@ -27,10 +29,12 @@ This plugin is used to concat the components that will be used in tests.
 ```
 
 #### Additional configuration
+
 Note that, for Webpack, the plugin automatically inject the `devServer.static.directory` configuration.  
 For the other bundlers, you should configure it by yourself.
 
 ### NativeFederationTestsHost
+
 This plugin is used to download the concatenated components mock that will be used for tests.
 
 ### Configuration
@@ -55,26 +59,31 @@ import {NativeFederationTestsHost, NativeFederationTestsRemote} from '@ranshamay
 
 export default defineConfig({
   plugins: [
-    NativeFederationTestsRemote({ /* options */ }),
-    NativeFederationTestsHost({ /* options */ }),
+    NativeFederationTestsRemote({
+      /* options */
+    }),
+    NativeFederationTestsHost({
+      /* options */
+    }),
   ],
   /* ... */
-  server: { // This is needed to emulate the devServer.static.directory of WebPack and correctly serve the zip file
+  server: {
+    // This is needed to emulate the devServer.static.directory of WebPack and correctly serve the zip file
     /* ... */
     proxy: {
       '/@mf-types.zip': {
-          target: 'http://localhost:3000',
-          changeOrigin: true,
-          rewrite: () => `/@fs/${process.cwd()}/dist/@mf-types.zip`
-      }
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        rewrite: () => `/@fs/${process.cwd()}/dist/@mf-types.zip`,
+      },
     },
     fs: {
       /* ... */
-      allow: ['./dist']
+      allow: ['./dist'],
       /* ... */
-    }
-  }
-})
+    },
+  },
+});
 ```
 
 <br>
@@ -88,10 +97,14 @@ import {NativeFederationTestsHost, NativeFederationTestsRemote} from '@ranshamay
 
 export default {
   plugins: [
-    NativeFederationTestsRemote({ /* options */ }),
-    NativeFederationTestsHost({ /* options */ }),
+    NativeFederationTestsRemote({
+      /* options */
+    }),
+    NativeFederationTestsHost({
+      /* options */
+    }),
   ],
-}
+};
 ```
 
 <br>
@@ -105,10 +118,14 @@ const {NativeFederationTestsHost, NativeFederationTestsRemote} = require('@ransh
 module.exports = {
   /* ... */
   plugins: [
-    NativeFederationTestsRemote({ /* options */ }),
-    NativeFederationTestsHost({ /* options */ })
-  ]
-}
+    NativeFederationTestsRemote({
+      /* options */
+    }),
+    NativeFederationTestsHost({
+      /* options */
+    }),
+  ],
+};
 ```
 
 <br>
@@ -123,10 +140,14 @@ import {NativeFederationTestsHost, NativeFederationTestsRemote} from '@ranshamay
 
 build({
   plugins: [
-    NativeFederationTestsRemote({ /* options */ }),
-    NativeFederationTestsHost({ /* options */ })
+    NativeFederationTestsRemote({
+      /* options */
+    }),
+    NativeFederationTestsHost({
+      /* options */
+    }),
   ],
-})
+});
 ```
 
 <br>
@@ -142,10 +163,14 @@ const {NativeFederationTestsHost, NativeFederationTestsRemote} = require('@ransh
 module.exports = {
   /* ... */
   plugins: [
-    NativeFederationTestsRemote({ /* options */ }),
-    NativeFederationTestsHost({ /* options */ })
-  ]
-}
+    NativeFederationTestsRemote({
+      /* options */
+    }),
+    NativeFederationTestsHost({
+      /* options */
+    }),
+  ],
+};
 ```
 
 <br>
