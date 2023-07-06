@@ -71,15 +71,11 @@ class ReadFileChunkLoadingRuntimeModule extends RuntimeModule {
    * @param {unknown[]} items item to log
    */
   _getLogger(...items: unknown[]) {
-<<<<<<< HEAD
-    return Logger.getInlineLogger()(items);
-=======
     if (!this.options.debug) {
       return '';
     }
 
-    return `console.log(${items.join(',')});`;
->>>>>>> ca73890b9cc05086bc0e31c9b2f4ff962695f7dd
+    return Logger.getInlineLogger()(items);
   }
 
   /**
@@ -272,39 +268,8 @@ class ReadFileChunkLoadingRuntimeModule extends RuntimeModule {
                     ? 'if(true) { // all chunks have JS'
                     : `if(${hasJsMatcher('chunkId')}) {`,
                   Template.indent([
-<<<<<<< HEAD
-                    '// create a global scope for container, similar to how remotes are set on window in the browser',
-                    'global.__remote_scope__ = {',
-                    '_config: {},',
-                    '}',
-                  ]),
-                  '}',
-                ]),
-                Template.indent([
-                  executeLoadTemplate,
-                  `executeLoad(url,callback,chunkId)`,
-                ]),
-              ]
-            )}`,
-          ])
-        : '// no remote script loader needed',
-      withLoading
-        ? Template.asString([
-            '// ReadFile + VM.run chunk loading for javascript',
-            `${fn}.readFileVm = function(chunkId, promises) {`,
-            hasJsMatcher !== false
-              ? Template.indent([
-                  'var installedChunkData = installedChunks[chunkId];',
-                  'if(installedChunkData !== 0) { // 0 means "already installed".',
-                  Template.indent([
-                    '// array of [resolve, reject, promise] means "currently loading"',
-                    'if(installedChunkData) {',
-                    Template.indent(['promises.push(installedChunkData[2]);']),
-                    '} else {',
-=======
                     '// load the chunk and return promise to it',
                     'var promise = new Promise(async function(resolve, reject) {',
->>>>>>> ca73890b9cc05086bc0e31c9b2f4ff962695f7dd
                     Template.indent([
                       'installedChunkData = installedChunks[chunkId] = [resolve, reject];',
                       `var filename = typeof process !== "undefined" ? require('path').join(__dirname, ${JSON.stringify(
@@ -320,63 +285,6 @@ class ReadFileChunkLoadingRuntimeModule extends RuntimeModule {
                       Template.indent([
                         "fs.readFile(filename, 'utf-8', function(err, content) {",
                         Template.indent([
-<<<<<<< HEAD
-                          'installedChunkData = installedChunks[chunkId] = [resolve, reject];',
-                          `var filename = require('path').join(__dirname, ${JSON.stringify(
-                            rootOutputDir
-                          )} + ${
-                            RuntimeGlobals.getChunkScriptFilename
-                          }(chunkId));`,
-                          "var fs = require('fs');",
-                          'if(fs.existsSync(filename)) {',
-                          this._getLogger(
-                            `'chunk filename local load', chunkId`
-                          ),
-                          Template.indent([
-                            "fs.readFile(filename, 'utf-8', function(err, content) {",
-                            Template.indent([
-                              'if(err) return reject(err);',
-                              'var chunk = {};',
-                              "require('vm').runInThisContext('(function(exports, require, __dirname, __filename) {' + content + '\\n})', filename)" +
-                                "(chunk, require, require('path').dirname(filename), filename);",
-                              'installChunk(chunk);',
-                            ]),
-                            '});',
-                          ]),
-                          '} else {',
-                          this._getLogger(
-                            `'chunk filename remote load', chunkId`
-                          ),
-                          Template.indent([
-                            loadScriptTemplate,
-
-                            this._getLogger(
-                              `'needs to load remote module from ${JSON.stringify(
-                                name
-                              )}'`
-                            ),
-                            this._getLogger(
-                              `'remotes known to'`,
-                              JSON.stringify(name),
-                              JSON.stringify(remotes)
-                            ),
-
-                            // keys are mostly useless here, we want to find remote by its global (unique name)
-                            `var remotes = ${JSON.stringify(
-                              Object.values(remotesByType.normal).reduce(
-                                (acc, remote) => {
-                                  //TODO: need to handle all other cases like when remote is not a @ syntax string
-                                  const [global, url] = remote.split('@');
-                                  acc[global] = url;
-                                  return acc;
-                                },
-                                {} as Record<string, string>
-                              )
-                            )};`,
-                            'Object.assign(global.__remote_scope__._config, remotes)',
-                            'const remoteRegistry = global.__remote_scope__._config',
-                            /*
-=======
                           'if(err) return reject(err);',
                           'var chunk = {};',
                           "require('vm').runInThisContext('(function(exports, require, __dirname, __filename) {' + content + '\\n})', filename)" +
@@ -416,7 +324,6 @@ class ReadFileChunkLoadingRuntimeModule extends RuntimeModule {
                        // 'Object.assign(globalThis.__remote_scope__._config, remotes)',
                         'const remoteRegistry = globalThis.__remote_scope__._config',
                         /*
->>>>>>> ca73890b9cc05086bc0e31c9b2f4ff962695f7dd
                       TODO: keying by global should be ok, but need to verify - need to deal with when user passes promise new promise() global will/should still exist - but can only be known at runtime
                     */
                         this._getLogger(`'remotes keyed by global name'`,JSON.stringify(remotes)),
@@ -469,10 +376,7 @@ class ReadFileChunkLoadingRuntimeModule extends RuntimeModule {
                             this._getLogger(
                               '"requestedRemote"',
                               'requestedRemote',
-<<<<<<< HEAD
-=======
                               'current name',
->>>>>>> ca73890b9cc05086bc0e31c9b2f4ff962695f7dd
                               JSON.stringify(name)
                             ),
                             `var scriptUrl = new URL(requestedRemote);`,

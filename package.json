@@ -31,20 +31,10 @@
     "prod": "nx build:libs && nx run-many --target=build --verbose --output-style=stream",
     "commit": "cz",
     "git:pruneTags": "git tag -l | xargs git tag -d && git fetch --all --prune --tags",
-<<<<<<< HEAD
-    "prerelease:node": "nx run node:version --releaseAs=prerelease --preid=beta",
-    "prerelease:next": "nx run nextjs-mf:version --releaseAs=prerelease --preid=beta",
-    "prerelease:utils": "nx run utils:version --releaseAs=prerelease --preid=beta",
-    "prerelease:all": "nx run-many --target=version --projects=utils,node,nextjs-mf --releaseAs=prerelease --preid=rc --maxParallel=1",
-    "release:node": "nx run node:version --releaseAs=minor",
-    "release:next": "nx run nextjs-mf:version --releaseAs=patch",
-    "release:utils": "nx run utils:version --releaseAs=minor",
-=======
     "prerelease:all": "nx run-many --target=version --projects=utils,node,nextjs-mf --releaseAs=prerelease --preid=rc --maxParallel=1 --allowEmptyRelease=true",
     "release:node": "nx run node:version",
     "release:next": "nx run nextjs-mf:version",
     "release:utils": "nx run utils:version",
->>>>>>> ca73890b9cc05086bc0e31c9b2f4ff962695f7dd
     "release:utils:manual": "nx build && cd dist/packages/utilities && yarn publish --non-interactive --access public",
     "release:next:manual": "nx build && cd dist/packages/nextjs-mf && yarn publish --non-interactive --access public",
     "release:node:manual": "nx build && cd dist/packages/node && yarn publish --non-interactive --access public",
@@ -124,14 +114,6 @@
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
     "@types/react-router-dom": "5.3.3",
-<<<<<<< HEAD
-    "@types/webpack-sources": "^3.2.0",
-    "@typescript-eslint/eslint-plugin": "5.59.7",
-    "@typescript-eslint/parser": "5.59.7",
-    "@vitest/coverage-c8": "^0.31.0",
-    "asciidoctor-kroki": "^0.17.0",
-    "autoprefixer": "^10.4.14",
-=======
     "@types/webpack-sources": "3.2.0",
     "@typescript-eslint/eslint-plugin": "5.60.1",
     "@typescript-eslint/parser": "5.60.1",
@@ -139,7 +121,6 @@
     "antora-navigator-extension": "git+https://gitlab.com/opendevise/oss/antora-navigator-extension",
     "asciidoctor-kroki": "0.17.0",
     "autoprefixer": "10.4.14",
->>>>>>> ca73890b9cc05086bc0e31c9b2f4ff962695f7dd
     "babel-jest": "29.5.0",
     "babel-loader": "9.1.2",
     "command-join": "3.0.0",
