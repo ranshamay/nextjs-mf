@@ -26,7 +26,7 @@ const storybookConfig = {
   addons: [
     // other addons,
     {
-      name: '@ranshamay/storybook-addon',
+      name: "@ranshamay/storybook-addon",
       options: {
         moduleFederationConfig,
       },
@@ -49,8 +49,8 @@ Replace NX utils `withModuleFederation` in `webpack.config.js` with our utils `w
 Example:
 
 ```javascript
-const { composePlugins, withNx } = require('@nrwl/webpack');
-const { withReact } = require('@nrwl/react');
+const { composePlugins, withNx } = require('@nx/webpack');
+const { withReact } = require('@nx/react');
 const { withModuleFederation } = require('@ranshamay/storybook-addon');
 
 const baseConfig = require('./module-federation.config');
@@ -74,7 +74,7 @@ const storybookConfig = {
   addons: [
     // other addons,
     {
-      name: '@ranshamay/storybook-addon',
+      name: "@ranshamay/storybook-addon",
       options: {
         nxModuleFederationConfig,
       },

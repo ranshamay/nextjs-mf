@@ -1,10 +1,7 @@
-const { withNx } = require('@nrwl/next/plugins/with-nx');
-
 const NextFederationPlugin = require('@ranshamay/nextjs-mf');
-const { createDelegatedModule } = require('@ranshamay/utilities');
 
 /**
- * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
+ * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
   nx: {

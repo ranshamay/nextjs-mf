@@ -25,7 +25,10 @@ describe(`${correctImportPath.name}()`, () => {
     ['c:\\\\path\\to\\dir\\file.js', './file.js'],
     ['C:\\\\path\\to\\dir\\node_modules\\@scope\\module', '@scope/module'],
     ['@scope\\module', '@scope/module'],
-    ['@ranshamay\\storybook-addon', '@ranshamay/storybook-addon'],
+    [
+      '@module-federation\\storybook-addon',
+      '@ranshamay/storybook-addon',
+    ],
   ])(
     'should return correct path on windows systems - %s',
     (entryFile: string, output: string) => {

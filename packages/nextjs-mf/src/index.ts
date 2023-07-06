@@ -1,5 +1,4 @@
-// random change
-import NextFederationPlugin from './plugins/NextFederationPlugin';
+import NextFederationPlugin from "./plugins/NextFederationPlugin";
 
 export { NextFederationPlugin };
 export default NextFederationPlugin;

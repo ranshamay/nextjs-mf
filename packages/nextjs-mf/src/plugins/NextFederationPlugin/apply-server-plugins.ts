@@ -1,8 +1,5 @@
 import { Compiler } from 'webpack';
-import {
-  ModuleFederationPluginOptions,
-  DelegateModulesPlugin,
-} from '@ranshamay/utilities';
+import { ModuleFederationPluginOptions ,DelegateModulesPlugin} from '@ranshamay/utilities';
 import path from 'path';
 import InvertedContainerPlugin from '../container/InvertedContainerPlugin';
 import JsonpChunkLoading from '../JsonpChunkLoading';
@@ -176,8 +173,6 @@ export function configureServerCompilerOptions(compiler: Compiler): void {
     'require',
     'default',
   ];
-  // Build will hang without this. Likely something in my plugin
-  compiler.options.optimization.chunkIds = 'named';
   // no custom chunk rules
   compiler.options.optimization.splitChunks = undefined;
 

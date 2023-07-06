@@ -1,4 +1,10 @@
-import type { Compiler, Compilation, Chunk, Module } from 'webpack';
+import type {
+  Compiler,
+  Compilation,
+  Chunk,
+  Module,
+  NormalModule,
+} from 'webpack';
 
 /**
  * A webpack plugin that moves specified modules from chunks to runtime chunk.
@@ -13,7 +19,6 @@ class DelegateModulesPlugin {
     this._delegateModules = new Set();
   }
 
-  
   getChunkByName(chunks: Iterable<Chunk>, name: string): Chunk | undefined {
     for (const chunk of chunks) {
       if (chunk.name == name) {
@@ -129,5 +134,4 @@ class DelegateModulesPlugin {
     );
   }
 }
-
 export default DelegateModulesPlugin;

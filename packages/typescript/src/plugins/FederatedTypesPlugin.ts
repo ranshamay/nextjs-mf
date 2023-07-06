@@ -3,7 +3,11 @@ import path from 'path';
 import axios from 'axios';
 import { Compiler } from 'webpack';
 
-import { isObjectEmpty, Logger, LoggerInstance } from '@ranshamay/utilities';
+import {
+  isObjectEmpty,
+  Logger,
+  LoggerInstance,
+} from '@ranshamay/utilities';
 
 import { TypescriptCompiler } from '../lib/TypescriptCompiler';
 import { normalizeOptions } from '../lib/normalizeOptions';

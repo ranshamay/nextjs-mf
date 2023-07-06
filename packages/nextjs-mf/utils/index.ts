@@ -1,4 +1,9 @@
-export { extractUrlAndGlobal, injectScript } from '@ranshamay/utilities';
+import * as React from 'react';
+
+export {
+  extractUrlAndGlobal,
+  injectScript,
+} from '@ranshamay/utilities';
 // @ts-ignore
 export { flushChunks } from '@ranshamay/node/utils';
 export { FlushedChunks } from './flushedChunks';
