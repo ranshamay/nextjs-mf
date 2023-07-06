@@ -1,6 +1,6 @@
 {
   "name": "@ranshamay/utilities",
-  "version": "1.8.9",
+  "version": "3.0.0",
   "type": "commonjs",
   "main": "src/index.js",
   "types": "src/index.d.ts",
