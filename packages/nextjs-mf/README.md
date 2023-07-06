@@ -1,9 +1,9 @@
 <div align="center">
 	<!--  for version -->
-  <img src="https://img.shields.io/npm/v/@module-federation/nextjs-mf" alt="version" >
-	<img src="https://img.shields.io/npm/l/@module-federation/nextjs-mf.svg?" alt="license" >
+  <img src="https://img.shields.io/npm/v/@ranshamay/nextjs-mf" alt="version" >
+	<img src="https://img.shields.io/npm/l/@ranshamay/nextjs-mf.svg?" alt="license" >
   <!-- for downloads -->
-  <img src="https://img.shields.io/npm/dt/@module-federation/nextjs-mf" alt="downloads">
+  <img src="https://img.shields.io/npm/dt/@ranshamay/nextjs-mf" alt="downloads">
  </div>
 
 # Module Federation For Next.js
@@ -164,7 +164,7 @@ You can see it in action here: https://github.com/module-federation/module-feder
 ```js
 // next.config.js
 // either from default
-const NextFederationPlugin = require('@module-federation/nextjs-mf');
+const NextFederationPlugin = require('@ranshamay/nextjs-mf');
 
 module.exports = {
   webpack(config, options) {
@@ -195,7 +195,7 @@ module.exports = {
 ```js
 // next.config.js
 
-const NextFederationPlugin = require('@module-federation/nextjs-mf');
+const NextFederationPlugin = require('@ranshamay/nextjs-mf');
 
 module.exports = {
   webpack(config, options) {
@@ -253,7 +253,7 @@ If an error surfaces while loading the script, a unique error object is generate
 
 ```js
 //next.config.js
-const { createDelegatedModule } = require('@module-federation/utilities');
+const { createDelegatedModule } = require('@ranshamay/utilities');
 const remotes = {
   checkout: createDelegatedModule(require.resolve('./remote-delegate.js'), {
     remote: `checkout@http://localhost:3002/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
@@ -266,7 +266,7 @@ const remotes = {
 // ALL imports MUST BE dynamic imports in here like import()
 module.exports = new Promise(async (resolve, reject) => {
   const { importDelegatedModule } = await import(
-    '@module-federation/utilities/src/utils/importDelegatedModule'
+    '@ranshamay/utilities/src/utils/importDelegatedModule'
   );
   // eslint-disable-next-line no-undef
   const currentRequest = new URLSearchParams(__resourceQuery).get('remote');
@@ -308,7 +308,7 @@ For more information on `__resourceQuery` visit: https://webpack.js.org/api/modu
 
 ```js
 // next.config.js
-// its advised you use createDelegatedModule from @module-federation/utilities instead of manually creating the delegate module
+// its advised you use createDelegatedModule from @ranshamay/utilities instead of manually creating the delegate module
 const remotes = {
   // pass pointer to remote-delegate, pass delegate remote name as query param,
   // at runtime webpack will pass this as __resourceQuery
@@ -380,7 +380,7 @@ Ive added a util for dynamic chunk loading, in the event you need to load remote
 **InjectScript**
 
 ```js
-import { injectScript } from '@module-federation/nextjs-mf/utils';
+import { injectScript } from '@ranshamay/nextjs-mf/utils';
 // if i have remotes in my federation plugin, i can pass the name of the remote
 injectScript('home').then((remoteContainer) => {
   remoteContainer.get('./exposedModule');
@@ -405,7 +405,7 @@ More info here: https://github.com/module-federation/nextjs-mf/tree/main/package
 ```js
 // __document.js
 
-import { revalidate } from '@module-federation/nextjs-mf/utils';
+import { revalidate } from '@ranshamay/nextjs-mf/utils';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 class MyDocument extends Document {
   static async getInitialProps(ctx) {

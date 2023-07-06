@@ -6,7 +6,7 @@ import ts from 'typescript';
 import path from 'path';
 import fs from 'fs';
 
-import { Logger } from '@module-federation/utilities';
+import { Logger } from '@ranshamay/utilities';
 
 import {
   FederatedTypesPluginOptions,

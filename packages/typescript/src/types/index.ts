@@ -1,4 +1,4 @@
-import type { ModuleFederationPluginOptions } from '@module-federation/utilities';
+import type { ModuleFederationPluginOptions } from '@ranshamay/utilities';
 import { Compilation } from 'webpack';
 
 export { ModuleFederationPluginOptions };

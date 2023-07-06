@@ -5,7 +5,7 @@ export {
   injectScript,
 } from '@ranshamay/utilities';
 // @ts-ignore
-export { flushChunks } from '@module-federation/node/utils';
+export { flushChunks } from '@ranshamay/node/utils';
 export { FlushedChunks } from './flushedChunks';
 export type { FlushedChunksProps } from './flushedChunks';
 

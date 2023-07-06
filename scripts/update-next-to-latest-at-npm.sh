@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-PACKAGES=(@module-federation/native-federation-tests @module-federation/native-federation-typescript @module-federation/nextjs-mf @module-federation/node @module-federation/utilities @module-federation/typescript)
+PACKAGES=(@ranshamay/native-federation-tests @ranshamay/native-federation-typescript @ranshamay/nextjs-mf @ranshamay/node @ranshamay/utilities @ranshamay/typescript)
 
 for package in "${PACKAGES[@]}"; do
   # Check if the package is published with "next" tag

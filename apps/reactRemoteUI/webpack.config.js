@@ -3,7 +3,7 @@ const { registerPluginTSTranspiler } = require('nx/src/utils/nx-plugin.js');
 registerPluginTSTranspiler();
 const { composePlugins, withNx } = require('@nx/webpack');
 const { withReact } = require('@nx/react');
-const { withModuleFederation } = require('@module-federation/storybook-addon');
+const { withModuleFederation } = require('@ranshamay/storybook-addon');
 const baseConfig = require('./module-federation.config');
 
 const config = {

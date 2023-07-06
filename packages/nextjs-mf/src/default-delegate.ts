@@ -3,7 +3,7 @@ module.exports = new Promise(async (resolve, reject) => {
   // @ts-ignore
   const { importDelegatedModule } = await import(
     // @ts-ignore
-    '@module-federation/utilities/src/utils/importDelegatedModule'
+    '@ranshamay/utilities/src/utils/importDelegatedModule'
   );
   // eslint-disable-next-line no-undef
   const currentRequest = new URLSearchParams(__resourceQuery).get('remote');

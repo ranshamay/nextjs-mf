@@ -8,7 +8,7 @@ module.exports = new Promise(async (resolve, reject) => {
   //eslint-disable-next-line
   const currentRequest = new URLSearchParams(__resourceQuery).get('remote');
   const { importDelegatedModule } = await import(
-    '@module-federation/utilities'
+    '@ranshamay/utilities'
   );
 
   const [global, url] = currentRequest.split('@');

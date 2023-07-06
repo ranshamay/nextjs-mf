@@ -7,7 +7,7 @@ import {
   isObjectEmpty,
   Logger,
   LoggerInstance,
-} from '@module-federation/utilities';
+} from '@ranshamay/utilities';
 
 import { TypescriptCompiler } from '../lib/TypescriptCompiler';
 import { normalizeOptions } from '../lib/normalizeOptions';

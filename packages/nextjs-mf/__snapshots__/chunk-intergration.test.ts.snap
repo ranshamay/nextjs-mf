@@ -357,7 +357,7 @@ var __resourceQuery = "?remote=checkout@http://localhost:3002/_next/static/chunk
 
 // eslint-disable-next-line no-async-promise-executor
 module.exports = new Promise(async (resolve, reject) => {
-    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @module-federation/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
+    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @ranshamay/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
     // eslint-disable-next-line no-undef
     const currentRequest = new URLSearchParams(__resourceQuery).get('remote');
     const [global, url] = currentRequest.split('@');
@@ -384,7 +384,7 @@ var __resourceQuery = "?remote=shop@http://localhost:3001/_next/static/chunks/re
 
 // eslint-disable-next-line no-async-promise-executor
 module.exports = new Promise(async (resolve, reject) => {
-    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @module-federation/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
+    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @ranshamay/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
     // eslint-disable-next-line no-undef
     const currentRequest = new URLSearchParams(__resourceQuery).get('remote');
     const [global, url] = currentRequest.split('@');
@@ -2754,7 +2754,7 @@ var __resourceQuery = "?remote=checkout@http://localhost:3002/_next/static/chunk
 
 // eslint-disable-next-line no-async-promise-executor
 module.exports = new Promise(async (resolve, reject) => {
-    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @module-federation/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
+    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @ranshamay/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
     // eslint-disable-next-line no-undef
     const currentRequest = new URLSearchParams(__resourceQuery).get('remote');
     const [global, url] = currentRequest.split('@');
@@ -2781,7 +2781,7 @@ var __resourceQuery = "?remote=shop@http://localhost:3001/_next/static/chunks/re
 
 // eslint-disable-next-line no-async-promise-executor
 module.exports = new Promise(async (resolve, reject) => {
-    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @module-federation/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
+    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @ranshamay/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
     // eslint-disable-next-line no-undef
     const currentRequest = new URLSearchParams(__resourceQuery).get('remote');
     const [global, url] = currentRequest.split('@');
@@ -5414,7 +5414,7 @@ var __resourceQuery = "?remote=checkout@http://localhost:3002/_next/static/ssr/r
 
 // eslint-disable-next-line no-async-promise-executor
 module.exports = new Promise(async (resolve, reject) => {
-    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @module-federation/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
+    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @ranshamay/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
     // eslint-disable-next-line no-undef
     const currentRequest = new URLSearchParams(__resourceQuery).get('remote');
     const [global, url] = currentRequest.split('@');
@@ -5441,7 +5441,7 @@ var __resourceQuery = "?remote=shop@http://localhost:3001/_next/static/ssr/remot
 
 // eslint-disable-next-line no-async-promise-executor
 module.exports = new Promise(async (resolve, reject) => {
-    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @module-federation/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
+    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @ranshamay/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
     // eslint-disable-next-line no-undef
     const currentRequest = new URLSearchParams(__resourceQuery).get('remote');
     const [global, url] = currentRequest.split('@');
@@ -6382,7 +6382,7 @@ var __resourceQuery = "?remote=checkout@http://localhost:3002/_next/static/ssr/r
 
 // eslint-disable-next-line no-async-promise-executor
 module.exports = new Promise(async (resolve, reject) => {
-    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @module-federation/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
+    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @ranshamay/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
     // eslint-disable-next-line no-undef
     const currentRequest = new URLSearchParams(__resourceQuery).get('remote');
     const [global, url] = currentRequest.split('@');
@@ -6409,7 +6409,7 @@ var __resourceQuery = "?remote=shop@http://localhost:3001/_next/static/ssr/remot
 
 // eslint-disable-next-line no-async-promise-executor
 module.exports = new Promise(async (resolve, reject) => {
-    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @module-federation/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
+    const { importDelegatedModule } = await __webpack_require__.e(/*! import() */ "dist_packages_utilities_src_utils_common_js").then(__webpack_require__.bind(__webpack_require__, /*! @ranshamay/utilities/src/utils/common */ "../../dist/packages/utilities/src/utils/common.js"));
     // eslint-disable-next-line no-undef
     const currentRequest = new URLSearchParams(__resourceQuery).get('remote');
     const [global, url] = currentRequest.split('@');
