@@ -45,7 +45,7 @@ const concat = (x, y) => x.concat(y);
 
 const flatMap = (xs, f) => xs.map(f).reduce(concat, []);
 
-const getLogger = global.logger || console
+const getLogger = () => global.logger || console
 
 
 const logger = getLogger()
