@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [7.0.11](https://github.com/module-federation/nextjs-mf/compare/nextjs-mf-7.0.10...nextjs-mf-7.0.11) (2023-07-09)
+
+### Dependency Updates
+
+* `node` updated to version `1.0.11`
+* `node` updated to version `1.0.11`
+
+
 ## [7.0.10](https://github.com/module-federation/nextjs-mf/compare/nextjs-mf-7.0.9...nextjs-mf-7.0.10) (2023-07-09)
 
 ### Dependency Updates
