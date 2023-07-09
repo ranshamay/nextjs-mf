@@ -28,6 +28,7 @@ export default `
       globalThis.webpackChunkLoad(url).then(function (resp) {
         return resp.text();
       }).then(function (rawData) {
+        ${Logger.getInlineLogger()(['"loadScript"','"script loaded"','url'])}
         cb(null, rawData);
       }).catch(function (err) {
         ${Logger.getInlineLogger()(['"Federated Chunk load failed"','err'])}
