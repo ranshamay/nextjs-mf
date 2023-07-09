@@ -11,6 +11,7 @@ import { ConcatSource } from 'webpack-sources';
 import JsonpChunkLoadingRuntimeModule from 'webpack/lib/web/JsonpChunkLoadingRuntimeModule';
 import Template from '../../utils/Template';
 import template from './container/custom-jsonp';
+import {Logger} from '@ranshamay/utilities'
 
 function getCustomJsonpCode(
   chunkLoadingGlobal: string,
@@ -18,6 +19,7 @@ function getCustomJsonpCode(
 ): string {
   const code = [
     'var chunkQueue = [];',
+    Logger.getInlineLogger()(['chunkQueue']),
     'var chunkTracker = [];',
     `var chunkLoadingGlobal = self[${JSON.stringify(
       chunkLoadingGlobal
