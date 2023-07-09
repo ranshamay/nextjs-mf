@@ -71,9 +71,9 @@ class ReadFileChunkLoadingRuntimeModule extends RuntimeModule {
    * @param {unknown[]} items item to log
    */
   _getLogger(...items: unknown[]) {
-    if (!this.options.debug) {
-      return '';
-    }
+    // if (!this.options.debug) {
+    //   return '';
+    // }
 
     return Logger.getInlineLogger()(items);
   }
