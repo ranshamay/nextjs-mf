@@ -4,7 +4,7 @@
 */
 
 'use strict';
-
+import {Logger} from '@ranshamay/utilities'
 import type { Chunk, Compiler, Module } from 'webpack';
 import { RuntimeModule } from 'webpack';
 import {
@@ -33,6 +33,7 @@ interface ChunkLoadingContext {
   webpack: Compiler['webpack'];
   debug?: boolean;
 }
+
 
 /**
  * InvertedContainerRuntimeModule is a Webpack runtime module that generates
@@ -102,6 +103,7 @@ class InvertedContainerRuntimeModule extends RuntimeModule {
      */
     //@ts-ignore
     const addShared = (modules, chunk, list) => {
+      Logger.getLogger().info('addShared', modules, chunk, list)
       for (const m of modules) {
         const module = /** @type {ConsumeSharedModule} */ m;
         const id = chunkGraph.getModuleId(module);
@@ -118,6 +120,7 @@ class InvertedContainerRuntimeModule extends RuntimeModule {
     };
     // @ts-ignore
     const addModules = (modules, chunk, list) => {
+      Logger.getLogger().info('addModules', modules, chunk, list)
       for (const m of modules) {
         const module = /** @type {ConsumeSharedModule} */ m;
         const id = chunkGraph.getModuleId(module);
@@ -186,6 +189,7 @@ class InvertedContainerRuntimeModule extends RuntimeModule {
       ])};`,
       `var findVersion = ${runtimeTemplate.basicFunction('scope, key', [
         'var versions = scope[key];',
+        Logger.getInlineLogger()(['"findVersion"']),
         `var key = Object.keys(versions).reduce(${runtimeTemplate.basicFunction(
           'a, b',
           ['return !a || versionLt(a, b) ? b : a;']
@@ -196,6 +200,7 @@ class InvertedContainerRuntimeModule extends RuntimeModule {
         'scope, key',
         [
           'var versions = scope[key];',
+          Logger.getInlineLogger()(['"findSingletonVersionKey"']),
           `return Object.keys(versions).reduce(${runtimeTemplate.basicFunction(
             'a, b',
             ['return !a || (!versions[a].loaded && versionLt(a, b)) ? b : a;']
@@ -280,6 +285,7 @@ class InvertedContainerRuntimeModule extends RuntimeModule {
         Template.asString([
           'function(scopeName, a, b, c) {',
           Template.indent([
+            Logger.getInlineLogger()(['"init"', 'scopeName']),
             `var promise = ${RuntimeGlobals.initializeSharing}(scopeName);`,
             `if (promise && promise.then) return promise.then(fn.bind(fn, scopeName, ${RuntimeGlobals.shareScopeMap}[scopeName], a, b, c));`,
             `return fn(scopeName, ${RuntimeGlobals.shareScopeMap}[scopeName], a, b, c);`,
@@ -293,6 +299,7 @@ class InvertedContainerRuntimeModule extends RuntimeModule {
         'scopeName, scope, key',
         [
           'ensureExistence(scopeName, key);',
+          Logger.getInlineLogger()(['"init invoke"']),
           'return get(findVersion(scope, key));',
         ]
       )});`,
