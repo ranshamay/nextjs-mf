@@ -1,6 +1,6 @@
 {
   "name": "@ranshamay/node",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "main": "src/index.js",
   "exports": {
     ".": {
