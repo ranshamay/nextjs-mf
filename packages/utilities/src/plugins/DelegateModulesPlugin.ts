@@ -3,7 +3,6 @@ import type {
   Compilation,
   Chunk,
   Module,
-  NormalModule,
 } from 'webpack';
 
 /**

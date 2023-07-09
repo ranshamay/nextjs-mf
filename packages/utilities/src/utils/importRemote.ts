@@ -3,6 +3,8 @@ import type {
   WebpackRequire,
   WebpackShareScopes,
 } from '../types';
+import {Logger} from '../Logger'
+const logger = Logger.getLogger();
 
 type RemoteUrl = string | (() => Promise<string>);
 
@@ -22,6 +24,7 @@ const loadRemote = (
   bustRemoteEntryCache: ImportRemoteOptions['bustRemoteEntryCache']
 ) =>
   new Promise<void>((resolve, reject) => {
+    logger.debug('loadRemote', url, scope, bustRemoteEntryCache);
     const timestamp = bustRemoteEntryCache ? `?t=${new Date().getTime()}` : '';
     const webpackRequire = __webpack_require__ as unknown as WebpackRequire;
     webpackRequire.l(
@@ -29,12 +32,15 @@ const loadRemote = (
       (event) => {
         if (event?.type === 'load') {
           // Script loaded successfully:
+          logger.debug('loadRemote done', url, scope, bustRemoteEntryCache);
+          logger.debug('Script loaded successfully: ', event);
           return resolve();
         }
         const realSrc = event?.target?.src;
         const error = new Error();
         error.message = 'Loading script failed.\n(missing: ' + realSrc + ')';
         error.name = 'ScriptExternalLoadError';
+        logger.error('ScriptExternalLoadError', error);
         reject(error);
       },
       scope
@@ -56,11 +62,14 @@ const initContainer = async (containerScope: any) => {
       __webpack_share_scopes__ as unknown as WebpackShareScopes;
     if (!containerScope.__initialized && !containerScope.__initializing) {
       containerScope.__initializing = true;
+      logger.debug('initContainer', containerScope);
       await containerScope.init(webpackShareScopes.default);
+      logger.debug('initContainer done', containerScope);
       containerScope.__initialized = true;
       delete containerScope.__initializing;
     }
   } catch (error) {
+    logger.error('initContainer error', error);
     console.error(error);
   }
 };
@@ -107,11 +116,15 @@ export const importRemote = async <T>({
         (module === '.' || module.startsWith('./')) ? module : `./${module}`
       ),
     ]);
-    return moduleFactory();
+    logger.debug('importRemote done, invoking moduleFactory')
+    const mf =  moduleFactory();
+    logger.debug('done invoking moduleFactory')
+    return mf;
   } else {
     const moduleFactory = await (
       window[remoteScope] as unknown as WebpackRemoteContainer
     ).get((module === '.' || module.startsWith('./')) ? module : `./${module}`);
+    logger.debug('done invoking moduleFactory async')
     return moduleFactory();
   }
 };

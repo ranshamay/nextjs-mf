@@ -1,9 +1,13 @@
+import {Logger} from '../Logger'
+const logger = Logger.getLogger();
+
 export const correctImportPath = (context: string, entryFile: string) => {
 
   if (typeof process !== 'undefined') {
     if (process?.platform !== 'win32') {
       return entryFile;
     }
+    logger.debug('correctImportPath', {context, entryFile});
     console.log('entryFile', entryFile);
 
     if (entryFile.match(/^\.?\.\\/) || !entryFile.match(/^[A-Z]:\\\\/i)) {

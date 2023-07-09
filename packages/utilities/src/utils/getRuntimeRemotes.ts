@@ -1,5 +1,8 @@
 import { RuntimeRemotesMap } from '../types';
 import { extractUrlAndGlobal, remoteVars } from './common';
+import {Logger} from '../Logger'
+const logger = Logger.getLogger();
+
 
 export const getRuntimeRemotes = () => {
   try {
@@ -37,6 +40,8 @@ export const getRuntimeRemotes = () => {
       else {
         //@ts-ignore
         console.warn('remotes process', process.env.REMOTES);
+        //@ts-ignore
+        logger.warn('remotes process', process.env.REMOTES);
         throw new Error(
           `[mf] Invalid value received for runtime_remote "${key}"`
         );
@@ -47,6 +52,7 @@ export const getRuntimeRemotes = () => {
 
     return runtimeRemotes;
   } catch (err) {
+    logger.warn('Unable to retrieve runtime remotes: ', err);
     console.warn('Unable to retrieve runtime remotes: ', err);
   }
 

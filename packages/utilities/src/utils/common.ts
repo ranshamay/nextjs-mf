@@ -8,8 +8,12 @@ import type {
   RuntimeRemote,
   WebpackRemoteContainer,
 } from '../types';
+import {Logger} from '../Logger'
 import { getRuntimeRemotes } from './getRuntimeRemotes';
 import { RemoteVars } from '../types';
+
+const logger = Logger.getLogger();
+
 let remotesFromProcess = {} as RemoteVars;
 try {
   // @ts-ignore
@@ -34,6 +38,7 @@ export const createDelegatedModule = (
   const queries: string[] = [];
   for (const [key, value] of Object.entries(params)) {
     if (Array.isArray(value) || typeof value === 'object') {
+      logger.error(`[Module Federation] Delegated module params cannot be an array or object. Key "${key}" should be a string or number`, performance.now(), value)
       throw new Error(
         `[Module Federation] Delegated module params cannot be an array or object. Key "${key}" should be a string or number`
       );
@@ -46,7 +51,7 @@ export const createDelegatedModule = (
 
 export const loadScript = (keyOrRuntimeRemoteItem: string | RuntimeRemote) => {
   const runtimeRemotes = getRuntimeRemotes();
-
+  logger.debug(`loadScript common`, performance.now(), keyOrRuntimeRemoteItem, runtimeRemotes)
   // 1) Load remote container if needed
   let asyncContainer: RuntimeRemote['asyncContainer'];
   const reference =
@@ -143,6 +148,7 @@ export const loadScript = (keyOrRuntimeRemoteItem: string | RuntimeRemote) => {
         containerKey
       );
     }).catch(function (err) {
+      logger.error('container is offline, returning fake remote')
       console.error('container is offline, returning fake remote');
       console.error(err);
 
@@ -150,6 +156,7 @@ export const loadScript = (keyOrRuntimeRemoteItem: string | RuntimeRemote) => {
         fake: true,
         // @ts-ignore
         get: (arg) => {
+          logger.warn('faking', arg, 'module on, its offline')
           console.warn('faking', arg, 'module on, its offline');
 
           return Promise.resolve(() => {
@@ -202,6 +209,8 @@ const createContainerSharingScope = (
         container.init(__webpack_share_scopes__['default'] as any);
       } catch (e) {
         // maybe container already initialized so nothing to throw
+        logger.warn(' container already initialized so nothing to throw',container)
+
       }
       return container;
     });

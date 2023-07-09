@@ -1,5 +1,7 @@
 import { RuntimeRemote, WebpackRemoteContainer } from '../types';
 import { loadScript } from './common';
+import {Logger} from '../Logger'
+const logger = Logger.getLogger();
 
 export const importDelegatedModule = async (
   keyOrRuntimeRemoteItem: string | RuntimeRemote
@@ -40,6 +42,8 @@ export const importDelegatedModule = async (
                             //@ts-ignore
                             `${keyOrRuntimeRemoteItem.global}->${arg}`
                           );
+                          //@ts-ignore
+                          logger.debug(`[mf] ${keyOrRuntimeRemoteItem.global}->${arg}`)
                         //eslint-disable-next-line prefer-rest-params
                         return m[prop](...arguments);
                       };
@@ -56,7 +60,8 @@ export const importDelegatedModule = async (
                           //@ts-ignore
                           `${keyOrRuntimeRemoteItem.global}->${arg}`
                         );
-
+                        //@ts-ignore
+                        logger.debug(`[mf] ${keyOrRuntimeRemoteItem.global}->${arg}`)
                       return m[prop];
                     },
                     enumerable: true,
