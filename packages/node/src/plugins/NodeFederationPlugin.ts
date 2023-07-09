@@ -3,6 +3,7 @@
 import type { Compiler, container } from 'webpack';
 import type { ModuleFederationPluginOptions } from '../types';
 import { extractUrlAndGlobal } from '@ranshamay/utilities';
+import { Logger } from '@ranshamay/utilities';
 
 interface NodeFederationOptions extends ModuleFederationPluginOptions {
   experiments?: Record<string, unknown>;
@@ -61,6 +62,7 @@ export const generateRemoteTemplate = (
     __webpack_require__.l(
       ${JSON.stringify(url)},
       function (event) {
+        ${Logger.getInlineLogger()(['"recieved event"','event'])}
         if (typeof globalThis.__remote_scope__[${JSON.stringify(global)}] !== 'undefined') return resolve(globalThis.__remote_scope__[${JSON.stringify(global)}]);
          var realSrc = event && event.target && event.target.src;
         __webpack_error__.message = 'Loading script failed.\\n(' + event.message + ': ' + realSrc + ')';

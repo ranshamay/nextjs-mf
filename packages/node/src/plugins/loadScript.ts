@@ -73,6 +73,7 @@ export default `
 //language=JS
 export const executeLoadTemplate = `
   function executeLoad(url, callback, name) {
+    ${Logger.getInlineLogger()(['"executeLoadTemplate"','url','name'])}
     if (!name) {
       throw new Error('__webpack_require__.l name is required for ' + url);
     }
@@ -85,14 +86,16 @@ export const executeLoadTemplate = `
       }).then(function (scriptContent) {
         try {
          const m = require('module');
-
+         ${Logger.getInlineLogger()(['"executeLoadTemplate, context creating"', 'url'])}
          const remoteCapsule = vm.runInThisContext(m.wrap(scriptContent), 'node-federation-loader-' + name + '.vm')
+         ${Logger.getInlineLogger()(['"executeLoadTemplate, context created"', 'url'])}
          const exp = {};
          let remote = {exports:{}};
          remoteCapsule(exp,require,remote,'node-federation-loader-' + name + '.vm',__dirname);
          remote = remote.exports || remote;
           globalThis.__remote_scope__[name] = remote[name] || remote;
           globalThis.__remote_scope__._config[name] = url;
+          ${Logger.getInlineLogger()(['"executeLoadTemplate, executing remote context"', 'url'])}
           callback(globalThis.__remote_scope__[name])
         } catch (e) {
           ${Logger.getInlineLogger()(['"executeLoad hit catch block"','e'])}

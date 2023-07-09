@@ -287,8 +287,10 @@ class ReadFileChunkLoadingRuntimeModule extends RuntimeModule {
                         Template.indent([
                           'if(err) return reject(err);',
                           'var chunk = {};',
+                          this._getLogger(['"readFile, creating context"']),
                           "require('vm').runInThisContext('(function(exports, require, __dirname, __filename) {' + content + '\\n})', filename)" +
                           "(chunk, require, require('path').dirname(filename), filename);",
+                          this._getLogger(['"readFile, before install chunk"']),
                           'installChunk(chunk);',
                         ]),
                         '});',

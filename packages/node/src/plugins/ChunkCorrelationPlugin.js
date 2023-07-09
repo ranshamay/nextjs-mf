@@ -1,3 +1,4 @@
+
 const PLUGIN_NAME = 'FederationStatsPlugin';
 
 /** @typedef {import("./webpack-stats-types").WebpackStats} WebpackStats */
@@ -83,6 +84,7 @@ function getDependenciesOfChunk(stats, chunk) {
  * @returns {Exposed}
  */
 function getExposed(stats, mod) {
+  global.logger.debug(`getExposed for ${mod.name}`);
   const chunks = stats.chunks.filter((chunk) => {
     return chunk.modules.find((modsInChunk) => {
       return modsInChunk.id === mod.id && !modsInChunk.dependent;
@@ -120,6 +122,7 @@ function getExposed(stats, mod) {
  * @returns {boolean}
  */
 function searchIssuer(mod, check) {
+  global.logger.debug(`searchIssuer for ${mod.name}`);
   if (mod.issuer && check(mod.issuer)) {
     return true;
   }
@@ -128,6 +131,7 @@ function searchIssuer(mod, check) {
 }
 
 function searchReason(mod, check) {
+  global.logger.debug(`searchReason for ${mod.name}`);
   if (mod.reasons && check(mod.reasons)) {
     return true;
   }
@@ -136,6 +140,7 @@ function searchReason(mod, check) {
 }
 
 function searchIssuerAndReason(mod, check) {
+  global.logger.debug(`searchIssuerAndReason for ${mod.name}`);
   const foundIssuer = searchIssuer(mod, (issuer) => check(issuer));
   if (foundIssuer) return foundIssuer;
   return searchReason(mod, (reason) =>
@@ -149,6 +154,7 @@ function searchIssuerAndReason(mod, check) {
  * @returns {string[]}
  */
 function getIssuers(mod, check) {
+  global.logger.debug(`getIssuers for ${mod.name}`);
   if (mod.issuer && check(mod.issuer)) {
     return [mod.issuer];
   }
@@ -161,6 +167,7 @@ function getIssuers(mod, check) {
 }
 
 function getIssuersAndReasons(mod, check) {
+  global.logger.debug(`getIssuersAndReasons for ${mod.name}`);
   if (mod.issuer && check(mod.issuer)) {
     return [mod.issuer];
   }
@@ -196,6 +203,7 @@ function getIssuersAndReasons(mod, check) {
  * @returns {SharedDependency}
  */
 function parseFederatedIssuer(issuer) {
+  global.logger.debug(`parseFederatedIssuer for ${issuer}`);
   const split = issuer?.split('|') || [];
   if (split.length !== 8 || split[0] !== 'consume-shared-module') {
     return null;
@@ -228,6 +236,7 @@ function parseFederatedIssuer(issuer) {
  * @returns {SharedModule[]}
  */
 function getSharedModules(stats, federationPlugin) {
+  global.logger.debug(`getSharedModules for ${federationPlugin.name}`);
   return flatMap(
     stats.chunks.filter((chunk) => {
       if (!stats.entrypoints[federationPlugin.name]) {
@@ -281,6 +290,7 @@ function getSharedModules(stats, federationPlugin) {
  * @returns {SharedModule[]}
  */
 function getMainSharedModules(stats) {
+  global.logger.debug('getMainSharedModules')
   const chunks = stats.namedChunkGroups['main']
     ? flatMap(stats.namedChunkGroups['main'].chunks, (c) =>
         stats.chunks.filter((chunk) => chunk.id === c)
@@ -333,6 +343,7 @@ function getMainSharedModules(stats) {
  * @returns {FederatedStats}
  */
 function getFederationStats(stats, federationPluginOptions) {
+  global.logger.debug(`getFederationStats for ${federationPluginOptions.name}`);
   const exposedModules = Object.entries(federationPluginOptions.exposes).reduce(
     (exposedModules, [exposedAs, exposedFile]) =>
       Object.assign(exposedModules, {
