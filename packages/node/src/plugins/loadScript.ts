@@ -9,7 +9,7 @@ import { Logger } from '@ranshamay/utilities';
 //language=JS
 export default `
   function loadScript(url, cb, chunkID) {
-    ${Logger.getInlineLogger()(['"loadScript"'])}
+    ${Logger.getInlineLogger()(['"loadScript"','url'])}
     var url;
     var cb = arguments[arguments.length - 1];
     if (typeof cb !== "function") {
