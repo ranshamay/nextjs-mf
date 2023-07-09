@@ -455,6 +455,7 @@ class ReadFileChunkLoadingRuntimeModule extends RuntimeModule {
                 Template.indent([
                   'if(err) return reject(err);',
                   'var update = {};',
+                  this._getLogger(`'evaluating content'`),
                   "require('vm').runInThisContext('(function(exports, require, __dirname, __filename) {' + content + '\\n})', filename)" +
                     "(update, require, require('path').dirname(filename), filename);",
                   'var updatedModules = update.modules;',
