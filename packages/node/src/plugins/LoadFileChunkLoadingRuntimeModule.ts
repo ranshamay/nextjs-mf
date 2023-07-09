@@ -411,6 +411,7 @@ class ReadFileChunkLoadingRuntimeModule extends RuntimeModule {
                           this._getLogger(`'evaluating content2'`),
                           "eval('(function(exports, require, __dirname, __filename) {' + content + '\\n})')(chunk, __webpack_require__, '.', chunkName);",
                           '}',
+                          this._getLogger(`'evaluating content DONE'`),
                           'installChunk(chunk);',
                         ]),
                         '});',
