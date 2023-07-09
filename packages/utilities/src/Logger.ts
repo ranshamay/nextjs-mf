@@ -10,7 +10,8 @@ export class Logger {
   }
 
   static setLogger(logger: Compilation['logger']): LoggerInstance {
-    this.loggerInstance = logger || global.logger || console;
+    // @ts-ignore
+    this.loggerInstance = logger || globalThis.logger || console;
     return logger;
   }
 
